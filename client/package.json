@@ -1,0 +1,53 @@
+{
+  "name": "mygrpc",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config proxy.js",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "proto:generate:win": "for /f %G in ('dir /b ..\\proto\\*.proto') do grpc_tools_node_protoc --plugin=protoc-gen-ng=.\\node_modules\\.bin\\protoc-gen-ng.cmd --ng_out=.\\proto -I ..\\proto ..\\proto\\%G",
+    "test": "ng test",
+    "docker:start": "docker run -d -v ${PWD}/proxy/envoy.yaml:/etc/envoy/envoy.yaml:ro -p 8080:8080 -p 9901:9901 envoyproxy/envoy:v1.14.1"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~12.0.3",
+    "@angular/cdk": "^12.2.13",
+    "@angular/common": "~12.0.3",
+    "@angular/compiler": "~12.0.3",
+    "@angular/core": "~12.0.3",
+    "@angular/forms": "~12.0.3",
+    "@angular/material": "^12.2.13",
+    "@angular/platform-browser": "~12.0.3",
+    "@angular/platform-browser-dynamic": "~12.0.3",
+    "@angular/router": "~12.0.3",
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "@ngx-grpc/common": "^3.0.3",
+    "@ngx-grpc/core": "^3.0.3",
+    "@ngx-grpc/grpc-web-client": "^3.0.3",
+    "@ngx-grpc/well-known-types": "^3.0.3",
+    "google-protobuf": "^3.21.1",
+    "grpc-web": "^1.4.1",
+    "rxjs": "~6.6.0",
+    "ts-protoc-gen": "^0.15.0",
+    "tslib": "^2.1.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~12.0.3",
+    "@angular/cli": "~12.0.3",
+    "@angular/compiler-cli": "~12.0.3",
+    "@ngx-grpc/protoc-gen-ng": "^3.0.3",
+    "@types/google-protobuf": "^3.15.6",
+    "@types/jasmine": "~3.6.0",
+    "@types/node": "^12.11.1",
+    "jasmine-core": "~3.7.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "typescript": "~4.2.3"
+  }
+}
